@@ -1,0 +1,53 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #3498db; /* Mavi tonu */
+    color: #ecf0f1; /* Beyaz tonu */
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    max-width: 500px;
+    padding: 20px;
+    background-color: #2980b9; /* Daha koyu mavi tonu */
+    border-radius: 10px;
+  }
+  
+  h1 {
+    color: #ecf0f1; /* Beyaz tonu */
+  }
+  
+  p {
+    color: #ecf0f1; /* Beyaz tonu */
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4834d4; /* Daha koyu mavi tonu */
+    color: white; /* Beyaz tonu */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #663399; /* Daha koyu mavi tonu */
+  }
+  
+  #result {
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  

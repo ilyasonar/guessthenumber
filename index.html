@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number Game</title>
+  <link rel="icon" type="image/png" href="https://pngimg.com/uploads/question_mark/question_mark_PNG35.png">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://gibbswrightlawyers.com.au/wp-content/uploads/2020/05/Question.jpg'); 
+      color: #ecf0f1; /* Beyaz tonu */
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .container {
+      max-width: 500px;
+      padding: 20px;
+      background-image: url('https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png');
+      border-radius: 10px;
+    }
+    
+    h1 {
+      color: #ecf0f1; /* Beyaz tonu */
+    }
+    
+    p {
+      color: #ecf0f1; /* Beyaz tonu */
+      margin-bottom: 20px;
+    }
+    
+    input {
+      padding: 8px;
+      font-size: 16px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4834d4; /* Daha koyu mavi tonu */
+      color: white; /* Beyaz tonu */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #663399; /* Daha koyu mavi tonu */
+    }
+    
+    #result {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    
+    #restart-btn {
+      display: none; /* İlk başta gizli olacak */
+    }
+
+    /* Additional styles for the dropdown */
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown-content.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Guess the Number Game!</h1>
+    <h2 onclick="toggleInstructions()">How to play:</h2> <!-- Added onclick event to toggle instructions -->
+    <div id="instructions" class="dropdown-content">
+      <ol>
+        <li>Enter your guess in the input field.</li>
+        <li>Click the "Submit Guess" button.</li>
+        <li>Receive feedback on your guess and try to guess the correct number.</li>
+      </ol>
+    </div>
+
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guessInput" min="1" max="100">
+    <button onclick="checkGuess()">Submit Guess</button>
+    <div id="result"></div>
+    <button id="restart-btn" onclick="restartGame()">Restart</button> <!-- Restart butonu -->
+  </div>
+  
+  <audio id="clapSound" src="clap.mp3"></audio>
+  
+  <script>
+    const targetNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    // Function to toggle instructions visibility
+    function toggleInstructions() {
+      const instructions = document.getElementById('instructions');
+      instructions.classList.toggle('show');
+    }
+  
+    function checkGuess() {
+      const guess = document.getElementById('guessInput').value;
+      const resultDisplay = document.getElementById('result');
+      const clapSound = document.getElementById('clapSound');
+      attempts++;
+  
+      if (isNaN(guess) || guess < 1 || guess > 100) {
+        resultDisplay.textContent = 'Please enter a valid number between 1 and 100.';
+        resultDisplay.style.color = '#e74c3c'; /* Error text color */
+      } else {
+        if (guess == targetNumber) {
+          resultDisplay.innerHTML = `Congratulations! You guessed the right number (${targetNumber}) in ${attempts} attempts.`;
+          resultDisplay.style.color = '#27ae60'; /* Success text color */
+          document.getElementById('guessInput').disabled = true;
+          clapSound.play(); // Play the sound effect
+          document.getElementById('restart-btn').style.display = 'inline-block'; // Oyun bittiğinde restart butonunu görünür yap
+        } else {
+          resultDisplay.textContent = `Try again. Hint: The correct number is ${guess < targetNumber ? 'greater' : 'smaller'}.`;
+          resultDisplay.style.color = '#e74c3c'; /* Error text color */
+        }
+      }
+    }
+  
+    function restartGame() {
+      document.getElementById('guessInput').disabled = false;
+      document.getElementById('result').textContent = '';
+      document.getElementById('guessInput').value = '';
+      attempts = 0;
+      targetNumber = Math.floor(Math.random() * 100) + 1;
+      document.getElementById('restart-btn').style.display = 'none'; // Oyun yeniden başladığında restart butonunu gizle
+    }
+  </script>
+</body>
+</html>
