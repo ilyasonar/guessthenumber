@@ -39,8 +39,8 @@ I have tested and confirmed that all the buttons are working as they should do.I
 
 # Validator Testing
 I have tested the HTML code with W3C Validator testing and there are no errors with my code.I have tested the CSS code with W3C Jigsaw testing and there are no errors with my code. Here are the result of the tests for mobile and desktop:
-![](https://github.com/ilyasonar/ilyasonar.github.io/blob/main/chromelighthousetest.png)
-
+![](https://github.com/ilyasonar/guessthenumber/blob/main/performancetestdesktop.png)
+![](https://github.com/ilyasonar/guessthenumber/blob/main/performancetestmobile.png)
 # Deployment
 The site was deployed with GitHub pages. In the repository of this code on GitHub, the main branch was selected, and then a link was automatically generated for the website.
-[Link to live site](https://ilyasonar.github.io/)
+[Link to live site](https://ilyasonar.github.io/guessthenumber/)
